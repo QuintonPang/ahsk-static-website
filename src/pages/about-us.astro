@@ -1,0 +1,18 @@
+---
+import Site from '../layouts/Site.astro';
+import Banner from '../components/Banner.astro';
+import { url } from '../content';
+---
+<Site title="About Us">
+  <Banner variant="about" photo="books" />
+  <section class="interior wrap split about">
+    <div class="prose">
+      <h1 class="eyebrow">About Us</h1>
+      <p>This sample firm overview is set in Kuala Lumpur. It follows the reference page’s introduction to the firm and the services it offers.</p>
+      <p>The site presents two departments. One handles civil and commercial disputes. The other covers real estate, business transactions and corporate advisory.</p>
+      <p>This space is reserved for approved text about how the partners work together and assist clients.</p>
+      <p>Visit the <a href={url('practice-areas/')}>practice areas</a> section for both department pages, or see the <a href={url('our-partners/')}>partners</a> page.</p>
+    </div>
+    <figure class="photo-block"><img src={url('assets/conference.webp')} alt="" loading="lazy" /><figcaption class="image-note">Office image placeholder</figcaption></figure>
+  </section>
+</Site>

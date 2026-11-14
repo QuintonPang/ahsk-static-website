@@ -1,0 +1,12 @@
+---
+import Site from '../layouts/Site.astro';
+import Banner from '../components/Banner.astro';
+import { practices, url } from '../content';
+---
+<Site title="Practice Areas">
+  <Banner variant="practice" />
+  <section class="interior wrap prose">
+    <h1 class="eyebrow">Practice Areas</h1>
+    <ul class="practice-links">{practices.map(item => <li><a href={url(item.slug + '/')}>{item.name}</a></li>)}</ul>
+  </section>
+</Site>

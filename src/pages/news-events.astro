@@ -1,0 +1,13 @@
+---
+import Site from '../layouts/Site.astro';
+import Banner from '../components/Banner.astro';
+import NewsCards from '../components/NewsCards.astro';
+import { news } from '../content';
+---
+<Site title="News & Events">
+  <Banner variant="news" />
+  <section class="news-section wrap">
+    <h1>Latest News</h1>
+    <NewsCards items={news} />
+  </section>
+</Site>

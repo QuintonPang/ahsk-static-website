@@ -1,0 +1,33 @@
+---
+import Site from '../layouts/Site.astro';
+import Carousel from '../components/Carousel.astro';
+import NewsCards from '../components/NewsCards.astro';
+import { news, url } from '../content';
+const initialNews = [...news].reverse().slice(0, 4);
+---
+<Site title="Home" pageClass="home">
+  <Carousel />
+  <section class="wrap home-intro">
+    <h1>Commercial Lawyers <span>Kuala Lumpur</span></h1>
+    <p>This sample homepage introduces a Kuala Lumpur law firm and its two main areas of work, dispute resolution and commercial transactions. The text and imagery are placeholders for approved firm material.</p>
+  </section>
+  <section class="testimonial wrap">
+    <h2>What they say</h2>
+    <div class="testimonial-grid">
+      {Array.from({ length: 4 }, (_, i) => <div class="quote-placeholder"><span aria-hidden="true">“</span><p>Testimonial artwork placeholder {i + 1}</p></div>)}
+    </div>
+  </section>
+  <section class="updates" style={`--updates-image: url("${url('assets/conference.webp')}")`}>
+    <div class="wrap">
+      <p class="eyebrow">Updates</p><h2>News &amp; Events</h2>
+      <p>Browse sample case updates and firm announcements.</p>
+      <a class="button" href={url('news-events/')}>View news</a>
+    </div>
+    <span class="image-note">Image placeholder</span>
+  </section>
+  <section class="news-section wrap">
+    <h2>Latest News</h2>
+    <NewsCards items={initialNews} />
+    <div class="more-news"><a class="button" href={url('news-events/')}>Load More</a></div>
+  </section>
+</Site>

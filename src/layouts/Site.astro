@@ -1,0 +1,23 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/site.css';
+interface Props { title: string; pageClass?: string }
+const { title, pageClass } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="An unofficial static design demonstration of a law firm website." />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} | Law Firm Website Demo</title>
+  </head>
+  <body class={pageClass}>
+    <a class="skip" href="#content">Skip to content</a>
+    <Header />
+    <main id="content"><slot /></main>
+    <Footer />
+  </body>
+</html>
