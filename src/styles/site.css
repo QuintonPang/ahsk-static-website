@@ -158,7 +158,6 @@ textarea { resize: vertical; }
 @media (hover: hover) {
   a:hover { color: var(--gold); }
   .button:hover { background-color: var(--ink); color: var(--chrome); }
-  .person-practice:hover { color: var(--ink); }
 
   @media (prefers-reduced-motion: no-preference) {
     a { transition: color 150ms ease, background-color 150ms ease; }
