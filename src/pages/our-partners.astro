@@ -33,7 +33,7 @@ const people = [
       <p>These fictional profiles show how the Ang and Koh team directory could look.</p>
     </div>
     <ul class="people-grid">
-      {people.map(person => <li class="person-card">
+      {people.map(person => <li class="person-card" id={person.name.toLowerCase().replaceAll(" ", "-")}>
         <div class="person-mark" aria-hidden="true">{person.initials}</div>
         <div class="person-details">
           <p class="person-role">{person.role}</p>
