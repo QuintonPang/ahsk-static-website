@@ -1,19 +1,9 @@
 ---
 import Site from '../layouts/Site.astro';
-import Banner from '../components/Banner.astro';
-import { partners, url } from '../content';
 ---
-<Site title="Lawyers">
-  <Banner variant="partners" />
-  <section class="interior wrap partners">
-    <h1 class="eyebrow">Partners</h1>
-    <div class="partner-grid">
-      {partners.map(partner => <a class="partner-card" href={url(partner.slug + '/')}>
-        <div class="portrait"><span>Portrait placeholder</span></div>
-        <strong>{partner.name}</strong>
-        <span>{partner.area}</span>
-        <small>Qualifications placeholder</small>
-      </a>)}
-    </div>
+<Site title="People">
+  <section class="wrap interior prose">
+    <h1>People</h1>
+    <p>Approved lawyer profiles will appear here with their practice areas and qualifications.</p>
   </section>
 </Site>

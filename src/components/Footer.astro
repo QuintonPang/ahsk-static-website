@@ -3,10 +3,8 @@ import Brand from './Brand.astro';
 import { url } from '../content';
 ---
 <footer class="site-footer">
-  <div class="wrap footer-grid">
-    <div><Brand /><h2>Social Media</h2><span class="muted">Social links placeholder</span></div>
-    <div><h2>News &amp; Events</h2><p>Newsletter sign-up is unavailable in this demo.</p><a class="button" href={url('news-events/')}>View updates</a></div>
-    <div><h2>Contact Info</h2><p>Sample office address<br />Jalan Tun Razak<br />Kuala Lumpur</p><a href={url('contact/')}>Contact page</a></div>
+  <div class="wrap footer-inner">
+    <div><Brand /><p>Website concept · Sample content</p></div>
+    <nav aria-label="Footer navigation"><a href={url('practice-areas/')}>Practice areas</a><a href={url('contact/')}>Contact</a></nav>
   </div>
-  <p class="footer-bottom">Unofficial website recreation · Demo content and imagery</p>
 </footer>

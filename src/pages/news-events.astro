@@ -1,13 +1,10 @@
 ---
 import Site from '../layouts/Site.astro';
-import Banner from '../components/Banner.astro';
-import NewsCards from '../components/NewsCards.astro';
-import { news } from '../content';
+import { insights, url } from '../content';
 ---
-<Site title="News & Events">
-  <Banner variant="news" />
-  <section class="news-section wrap">
-    <h1>Latest News</h1>
-    <NewsCards items={news} />
+<Site title="Insights">
+  <section class="wrap interior narrow">
+    <h1>Insights</h1>
+    <ul class="practice-list">{insights.map(item => <li><a href={url('news-events/' + item.slug + '/')}><div><strong>{item.title}</strong><p>{item.summary}</p></div><span aria-hidden="true">↗</span></a></li>)}</ul>
   </section>
 </Site>

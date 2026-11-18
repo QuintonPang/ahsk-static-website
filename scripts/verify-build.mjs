@@ -37,6 +37,6 @@ const contact = readFileSync(resolve(root, 'contact/index.html'), 'utf8');
 assert.match(contact, /Demonstration form/);
 assert.doesNotMatch(contact, /<form[^>]+(?:action|method)=/);
 assert.doesNotMatch(contact, /<(?:input|textarea)[^>]+\bname=/);
-assert.ok(pages.length >= 19, 'Expected at least 19 built HTML pages');
+assert.equal(pages.length, 11, 'Expected the six main pages, four detail pages, and a 404 page');
 assert.equal(problems.length, 0, problems.join('\n'));
 console.log('Verified ' + pages.length + ' pages and ' + checked + ' internal link and asset references under ' + prefix);
