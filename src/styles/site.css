@@ -141,3 +141,15 @@ textarea { resize: vertical; }
   color: var(--gold);
   font-weight: 600;
 }
+
+@media (hover: hover) {
+  a:hover { color: var(--gold); }
+  .button:hover { background-color: var(--ink); color: var(--chrome); }
+  .person-practice:hover { color: var(--ink); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    a { transition: color 150ms ease, background-color 150ms ease; }
+    a > .chevron { transition: transform 150ms ease; }
+    a:hover > .chevron { transform: translateX(3px) rotate(45deg); }
+  }
+}
