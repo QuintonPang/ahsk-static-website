@@ -224,3 +224,5 @@ textarea { resize: vertical; }
 @media (max-width: 760px) {
   .newsletter { grid-template-columns: 1fr; }
 }
+
+.office-details { font-style: normal; }
