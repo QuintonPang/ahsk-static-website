@@ -15,7 +15,7 @@ const section = page.kind === 'practice' ? { path: 'practice-areas/', label: 'Pr
 ---
 <Site title={title}>
   <article class="wrap interior prose">
-    <a class="back-link" href={url(section.path)}>← {section.label}</a>
+    <a class="back-link" href={url(section.path)}>{section.label}</a>
     <h1>{title}</h1>
     <p class="lede">{page.item.summary}</p>
     {page.kind === 'practice' ? <>
@@ -23,7 +23,7 @@ const section = page.kind === 'practice' ? { path: 'practice-areas/', label: 'Pr
       <ul>{page.item.examples.map(example => <li>{example}</li>)}</ul>
       <h2>What to prepare</h2>
       <p>{page.item.prepare}</p>
-      <a class="button" href={url('contact/')}>Contact ↗</a>
+      <a class="button" href={url('contact/')}>Contact</a>
     </> : <>
       {page.item.paragraphs.map(paragraph => <p>{paragraph}</p>)}
     </>}

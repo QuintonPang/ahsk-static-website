@@ -89,3 +89,10 @@ textarea { resize: vertical; }
 @media (max-width: 420px) {
   .footer-inner { align-items: flex-start; flex-direction: column; }
 }
+.chevron {
+  width: .48em;
+  height: .48em;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(45deg);
+}

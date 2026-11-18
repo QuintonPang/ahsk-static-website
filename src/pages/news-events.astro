@@ -5,6 +5,6 @@ import { insights, url } from '../content';
 <Site title="Insights">
   <section class="wrap interior narrow">
     <h1>Insights</h1>
-    <ul class="practice-list">{insights.map(item => <li><a href={url('news-events/' + item.slug + '/')}><div><strong>{item.title}</strong><p>{item.summary}</p></div><span aria-hidden="true">↗</span></a></li>)}</ul>
+    <ul class="practice-list">{insights.map(item => <li><a href={url('news-events/' + item.slug + '/')}><div><strong>{item.title}</strong><p>{item.summary}</p></div><span class="chevron" aria-hidden="true"></span></a></li>)}</ul>
   </section>
 </Site>
