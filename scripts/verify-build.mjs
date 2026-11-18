@@ -14,6 +14,7 @@ for (const file of pages) {
   const publishedUrl = new URL(prefix + file.replace(/index\.html$/, ''), config.site);
   if (!page.includes('id="content"') || !page.includes('<h1')) problems.push(file + ' misses the main landmark or heading');
   for (const [, property, value] of page.matchAll(/\b(href|src)="([^"]+)"/g)) {
+    if (property === 'href' && /^tel:\+?[0-9]+$/i.test(value)) continue;
     if (property === 'href' && /^https:\/\/(?:www\.linkedin\.com\/sharing\/share-offsite\/\?url=|www\.facebook\.com\/sharer\/sharer\.php\?u=)/.test(value)) continue;
     if (value.startsWith('//') || /^https?:/i.test(value)) {
       problems.push(file + ' includes an external ' + property + ': ' + value);
