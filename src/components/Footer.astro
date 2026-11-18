@@ -1,10 +1,23 @@
 ---
 import Brand from './Brand.astro';
 import { url } from '../content';
+
+const homepage = encodeURIComponent(new URL(url(), Astro.site).href);
 ---
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <div><Brand /><p>Website concept · Sample content</p></div>
-    <nav aria-label="Footer navigation"><a href={url('practice-areas/')}>Practice areas</a><a href={url('contact/')}>Contact</a></nav>
+    <nav aria-label="Footer navigation">
+      <a href={url('practice-areas/')}>Practice areas</a>
+      <a href={url('news-events/')}>News &amp; Events</a>
+      <a href={url('contact/')}>Contact</a>
+    </nav>
+    <div class="footer-social">
+      <p>Share this website</p>
+      <nav aria-label="Social sharing">
+        <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${homepage}`}>LinkedIn</a>
+        <a href={`https://www.facebook.com/sharer/sharer.php?u=${homepage}`}>Facebook</a>
+      </nav>
+    </div>
   </div>
 </footer>

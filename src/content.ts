@@ -5,7 +5,7 @@ export const navigation = [
   { label: 'About', path: 'about-us/' },
   { label: 'Practice Areas', path: 'practice-areas/' },
   { label: 'People', path: 'our-partners/' },
-  { label: 'Insights', path: 'news-events/' },
+  { label: 'News & Events', path: 'news-events/' },
 ];
 
 export const practices = [
@@ -32,8 +32,9 @@ export const practices = [
   },
 ];
 
-export const insights = [
+export const updates = [
   {
+    kind: 'news',
     slug: 'prepare-for-a-first-meeting',
     title: 'What to bring to a first meeting',
     summary: 'A short checklist for organising documents, dates, and questions before you meet a lawyer.',
@@ -41,6 +42,27 @@ export const insights = [
       'Write a timeline in date order. Add an entry for each important conversation, letter, or document, and mark any dates you are unsure about.',
       'Collect the original documents and put related emails or messages together. Keep the full conversation so the reader can see the context.',
       'List what you want to find out at the meeting. Mention any upcoming deadline at the start so it can be discussed early.',
+    ],
+  },
+  {
+    kind: 'news',
+    slug: 'planning-a-contract-review',
+    title: 'Planning a contract review',
+    summary: 'Three things to prepare before asking for feedback on a draft agreement.',
+    paragraphs: [
+      'Gather the latest draft and any schedules it mentions. If there are several versions, mark the one everyone should review.',
+      'Write down the commercial points already agreed and the remaining decisions. Flag clauses that affect delivery, payment, or cancellation.',
+      'Share any date the parties are working towards so the review can be planned around it.',
+    ],
+  },
+  {
+    kind: 'event',
+    slug: 'small-business-contract-workshop',
+    title: 'Small business contract workshop',
+    summary: 'A sample session on turning a business agreement into a clear list of obligations and deadlines.',
+    paragraphs: [
+      'This is an example event listing. Registration and attendance are unavailable for this sample.',
+      'The proposed session uses a fictional supplier agreement to practise identifying deliverables, payment dates, and decisions that need clarification.',
     ],
   },
 ];

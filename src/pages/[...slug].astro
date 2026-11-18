@@ -1,17 +1,17 @@
 ---
 import Site from '../layouts/Site.astro';
-import { insights, practices, url } from '../content';
+import { updates, practices, url } from '../content';
 
 export function getStaticPaths() {
   return [
     ...practices.map(item => ({ params: { slug: 'practice-areas/' + item.slug }, props: { kind: 'practice' as const, item } })),
-    ...insights.map(item => ({ params: { slug: 'news-events/' + item.slug }, props: { kind: 'insight' as const, item } })),
+    ...updates.map(item => ({ params: { slug: 'news-events/' + item.slug }, props: { kind: 'insight' as const, item } })),
   ];
 }
 
 const page = Astro.props;
 const title = page.kind === 'practice' ? page.item.name : page.item.title;
-const section = page.kind === 'practice' ? { path: 'practice-areas/', label: 'Practice areas' } : { path: 'news-events/', label: 'Insights' };
+const section = page.kind === 'practice' ? { path: 'practice-areas/', label: 'Practice areas' } : { path: 'news-events/', label: 'News & Events' };
 ---
 <Site title={title}>
   <article class="wrap interior prose">

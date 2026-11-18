@@ -1,10 +1,29 @@
 ---
 import Site from '../layouts/Site.astro';
-import { insights, url } from '../content';
+import { updates, url } from '../content';
+
+const sections = [
+  { key: 'news', title: 'From the journal' },
+  { key: 'event', title: 'Events' },
+];
 ---
-<Site title="Insights">
-  <section class="wrap interior narrow">
-    <h1>Insights</h1>
-    <ul class="practice-list">{insights.map(item => <li><a href={url('news-events/' + item.slug + '/')}><div><strong>{item.title}</strong><p>{item.summary}</p></div><span class="chevron" aria-hidden="true"></span></a></li>)}</ul>
-  </section>
+<Site title="News & Events">
+  <div class="wrap interior updates-page">
+    <header class="updates-intro">
+      <h1>News &amp; Events</h1>
+      <p>Practical reading and sample events for businesses and individuals.</p>
+    </header>
+    <div class="updates-grid">
+      {sections.map(section => <section aria-labelledby={section.key + '-heading'}>
+        <h2 id={section.key + '-heading'}>{section.title}</h2>
+        <ul class="updates-list">
+          {updates.filter(item => item.kind === section.key).map(item => <li>
+            {item.kind === 'event' && <p class="event-status">Example event · Registration unavailable</p>}
+            <h3><a href={url('news-events/' + item.slug + '/')}>{item.title}<span class="chevron" aria-hidden="true"></span></a></h3>
+            <p>{item.summary}</p>
+          </li>)}
+        </ul>
+      </section>)}
+    </div>
+  </div>
 </Site>
