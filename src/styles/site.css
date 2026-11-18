@@ -133,7 +133,6 @@ textarea { resize: vertical; }
   display: grid;
   place-items: center;
   min-height: 150px;
-  border-bottom: 1px solid var(--line);
   background: radial-gradient(ellipse at 50% 100%, #274438, transparent 74%), var(--chrome);
   color: var(--gold);
   font: 3.2rem/1 Georgia, serif;
@@ -143,17 +142,6 @@ textarea { resize: vertical; }
 .person-details h2 { font-size: 1.9rem; }
 .person-details p { color: var(--muted); }
 .person-details .person-role { margin-bottom: 5px; color: var(--gold); font-size: .86rem; }
-.person-practice {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-  color: var(--gold);
-  font-weight: 600;
-}
 
 @media (hover: hover) {
   a:hover { color: var(--gold); }
