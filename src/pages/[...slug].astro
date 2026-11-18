@@ -25,6 +25,7 @@ const section = page.kind === 'practice' ? { path: 'practice-areas/', label: 'Pr
       <p>{page.item.prepare}</p>
       <a class="button" href={url('contact/')}>Contact</a>
     </> : <>
+      {page.item.image && <img class="workshop-image article-image" src={url('assets/' + page.item.image.file)} alt={page.item.image.alt} decoding="async" />}
       {page.item.paragraphs.map(paragraph => <p>{paragraph}</p>)}
     </>}
   </article>

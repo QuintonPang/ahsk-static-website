@@ -3,10 +3,16 @@ import Site from '../layouts/Site.astro';
 import { url } from '../content';
 ---
 <Site title="About">
-  <section class="wrap interior prose">
-    <h1>About Ang and Koh</h1>
-    <p>This website concept shows how a firm can explain its services, introduce its people, and help visitors prepare for a first conversation.</p>
-    <p>The firm’s approved background, office location, and approach to client work will be added once supplied.</p>
-    <a class="text-link" href={url('practice-areas/')}>Explore sample practice areas</a>
+  <section class="wrap interior about-layout">
+    <div class="prose">
+      <h1>About Ang and Koh</h1>
+      <p>This website concept shows how a firm can explain its services, introduce its people, and help visitors prepare for a first conversation.</p>
+      <p>The firm’s approved background, office location, and approach to client work will be added once supplied.</p>
+      <a class="text-link" href={url('practice-areas/')}>Explore sample practice areas</a>
+    </div>
+    <figure class="about-figure">
+      <img src={url('assets/office-atrium.webp')} alt="Daylight falling across timber fins and a limestone wall in a contemporary atrium" decoding="async" />
+      <figcaption>Illustrative interior</figcaption>
+    </figure>
   </section>
 </Site>

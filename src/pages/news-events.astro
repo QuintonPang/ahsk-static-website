@@ -18,6 +18,7 @@ const sections = [
         <h2 id={section.key + '-heading'}>{section.title}</h2>
         <ul class="updates-list">
           {updates.filter(item => item.kind === section.key).map(item => <li>
+            {item.image && <img class="workshop-image" src={url('assets/' + item.image.file)} alt={item.image.alt} loading="lazy" decoding="async" />}
             {item.kind === 'event' && <p class="event-status">Example event · Registration unavailable</p>}
             <h3><a href={url('news-events/' + item.slug + '/')}>{item.title}<span class="chevron" aria-hidden="true"></span></a></h3>
             <p>{item.summary}</p>

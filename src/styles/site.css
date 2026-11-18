@@ -174,3 +174,20 @@ textarea { resize: vertical; }
 @media (max-width: 760px) {
   .updates-grid { grid-template-columns: minmax(0, 1fr); }
 }
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  align-items: start;
+  gap: clamp(24px, 6vw, 70px);
+}
+.about-figure { margin: 0; }
+.about-figure img, .workshop-image { display: block; width: 100%; object-fit: cover; }
+.about-figure img { aspect-ratio: 5 / 4; }
+.about-figure figcaption { margin-top: 8px; color: var(--muted); font-size: .85rem; }
+.workshop-image { aspect-ratio: 2 / 1; margin-bottom: 18px; }
+.article-image { margin-block: 24px; }
+@media (max-width: 760px) {
+  .about-layout { grid-template-columns: minmax(0, 1fr); }
+  .about-figure img { aspect-ratio: 4 / 3; }
+}

@@ -58,6 +58,7 @@ export const updates = [
   {
     kind: 'event',
     slug: 'small-business-contract-workshop',
+    image: { file: 'workshop-table.webp', alt: 'Hands taking notes on worksheets around a meeting table' },
     title: 'Small business contract workshop',
     summary: 'A sample session on turning a business agreement into a clear list of obligations and deadlines.',
     paragraphs: [
