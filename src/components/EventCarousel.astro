@@ -1,5 +1,5 @@
 ---
-import { updates, url } from '../content';
+import { updates, eventImageUrl, url } from '../content';
 const events = updates.filter(item => item.kind === 'event');
 const images = [
   { file: 'assets/workshop-table.webp', alt: 'Hands taking notes around a workshop table' },
@@ -16,7 +16,7 @@ const images = [
     {events.map((event, index) => {
       const image = event.image?.file ? event.image : images[index % images.length];
       return <article class="carousel-slide" role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${events.length}`}>
-        <img src={url(image.file)} alt={image.alt} loading="lazy" width="900" height="600" />
+        <img src={eventImageUrl(image.file)} alt={image.alt} loading="lazy" width="900" height="600" />
         <div class="carousel-copy">
           {event.sample && <p>Example event</p>}
           <h3>{event.title}</h3>

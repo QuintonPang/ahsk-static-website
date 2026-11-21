@@ -1,6 +1,6 @@
 ---
 import Site from '../layouts/Site.astro';
-import { updates, url } from '../content';
+import { updates, eventImageUrl, url } from '../content';
 
 const sections = [
   { key: 'event', title: 'Events' },
@@ -17,7 +17,7 @@ const sections = [
         <h2 id={section.key + '-heading'}>{section.title}</h2>
         <ul class="updates-list">
           {updates.filter(item => item.kind === section.key).map(item => <li>
-            {item.image?.file && <img class="workshop-image" src={url(item.image.file)} alt={item.image.alt} loading="lazy" decoding="async" />}
+            {item.image?.file && <img class="workshop-image" src={eventImageUrl(item.image.file)} alt={item.image.alt} loading="lazy" decoding="async" />}
             {item.kind === 'event' && item.sample && <p class="event-status">Example event · Registration unavailable</p>}
             <h3><a href={url('news-events/' + item.slug + '/')}>{item.title}<span class="chevron" aria-hidden="true"></span></a></h3>
             {item.kind === 'event' && (item.date || item.venue) && <p class="event-status">

@@ -14,7 +14,9 @@ for (const file of pages) {
   const publishedUrl = new URL(prefix + file.replace(/index\.html$/, ''), config.site);
   if (file === 'admin/index.html') continue;
   if (!page.includes('id="content"') || !page.includes('<h1')) problems.push(file + ' misses the main landmark or heading');
+  const imageSources = new Set([...page.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/g)].map(match => match[1]));
   for (const [, property, value] of page.matchAll(/\b(href|src)="([^"]+)"/g)) {
+    if (property === 'src' && imageSources.has(value) && /^https:\/\//i.test(value)) continue;
     if (property === 'href' && /^tel:\+?[0-9]+$/i.test(value)) continue;
     if (property === 'href' && /^https:\/\/(?:www\.linkedin\.com\/sharing\/share-offsite\/\?url=|www\.facebook\.com\/sharer\/sharer\.php\?u=)/.test(value)) continue;
     if (/^https:\/\/(?:maps\.google\.com\/maps\?|www\.google\.com\/maps\/search\/\?)/.test(value)) continue;

@@ -1,6 +1,9 @@
 export const url = (path = '') =>
   import.meta.env.BASE_URL.replace(/\/$/, '') + '/' + path.replace(/^\/+/, '');
 
+export const eventImageUrl = (path: string) =>
+  /^https:\/\//i.test(path) ? path : url(path);
+
 export const navigation = [
   { label: 'About', path: 'about-us/' },
   { label: 'Practice Areas', path: 'practice-areas/' },
