@@ -68,9 +68,6 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; }
 .hero .practice-list a > span { color: var(--gold); }
 .button { display: inline-flex; align-items: center; gap: 22px; padding: 10px 20px; background: var(--gold); color: var(--chrome); text-decoration: none; border: 1px solid transparent; font: 600 .9rem/1.4 system-ui, sans-serif; cursor: pointer; }
 .button:hover { text-decoration: underline; }
-.home-guide { padding-block: clamp(36px, 6vw, 76px); display: grid; grid-template-columns: 1fr 1fr; column-gap: 55px; }
-.home-guide h2 { grid-row: span 2; }
-.home-guide p { margin-bottom: 8px; }
 .text-link, .back-link { font-weight: 650; }
 .site-footer { background: var(--chrome); border-top: 1px solid var(--line); }
 .footer-inner { padding-block: 30px; }
@@ -97,9 +94,8 @@ textarea { resize: vertical; }
   .header-inner nav a { padding: 9px 0; border: 0; border-top: 1px solid var(--line); }
   .enhanced .menu-toggle { display: block; }
   .enhanced nav:not(.open) { display: none; }
-  .hero-grid, .contact, .home-guide { grid-template-columns: 1fr; }
+  .hero-grid, .contact { grid-template-columns: 1fr; }
   .hero-practices { border-inline-start: 0; padding-inline-start: 0; }
-  .home-guide h2 { grid-row: auto; }
 }
 @media (max-width: 420px) {
   .footer-inner { align-items: flex-start; flex-direction: column; }
@@ -156,10 +152,10 @@ textarea { resize: vertical; }
 
 .updates-intro { background: transparent; border: 0; margin-bottom: clamp(28px, 5vw, 56px); }
 .updates-intro p, .updates-list p { color: var(--muted); }
-.updates-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(26px, 6vw, 72px); align-items: start; }
-.updates-grid section:last-child { padding: clamp(20px, 4vw, 38px); background: var(--surface); border: 1px solid var(--line); }
+.updates-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(26px, 6vw, 72px); align-items: start; }
+
 .updates-grid h2 { font-size: clamp(1.65rem, 3vw, 2.4rem); }
-.updates-list { list-style: none; padding: 0; margin: 0; }
+.updates-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; list-style: none; padding: 0; margin: 0; }
 .updates-list li { padding-block: 20px; border-top: 1px solid var(--line); }
 .updates-list h3 { margin: 0 0 8px; font: 400 1.55rem/1.2 Georgia, serif; }
 .updates-list h3 a { display: flex; justify-content: space-between; align-items: center; gap: 16px; text-decoration: none; }
@@ -195,3 +191,25 @@ textarea { resize: vertical; }
 }
 
 .office-details { font-style: normal; }
+
+.office-map { margin-top: 28px; }
+.office-map iframe { display: block; width: 100%; height: 300px; border: 1px solid var(--line); margin-bottom: 12px; color-scheme: light; }
+.event-carousel { padding-block: clamp(36px, 6vw, 76px); min-width: 0; }
+.carousel-heading, .carousel-controls { display: flex; align-items: center; gap: 16px; }
+.carousel-heading { justify-content: space-between; margin-bottom: 24px; }
+.carousel-heading h2 { margin: 0; }
+.carousel-controls[hidden] { display: none; }
+.carousel-controls button { width: 44px; height: 44px; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 50%; cursor: pointer; font-size: 1.4rem; }
+.carousel-controls button:disabled { opacity: .35; cursor: default; }
+.carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--line) var(--deep); }
+.carousel-slide { flex: 0 0 100%; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); scroll-snap-align: start; background: var(--surface); }
+.carousel-slide img { display: block; width: 100%; height: 100%; min-height: 300px; object-fit: cover; }
+.carousel-copy { align-self: center; padding: clamp(24px, 4vw, 48px); }
+.carousel-copy h3 { font: 400 clamp(1.6rem, 3vw, 2.4rem)/1.15 Georgia, serif; margin: 0 0 16px; }
+.carousel-copy p { color: var(--muted); }
+.carousel-position { color: var(--muted); margin-top: 12px; font-size: .85rem; }
+@media (max-width: 760px) {
+  .updates-list { grid-template-columns: minmax(0, 1fr); }
+  .carousel-slide { grid-template-columns: minmax(0, 1fr); }
+  .carousel-slide img { min-height: 0; height: 220px; }
+}

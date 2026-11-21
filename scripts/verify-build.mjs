@@ -17,6 +17,7 @@ for (const file of pages) {
   for (const [, property, value] of page.matchAll(/\b(href|src)="([^"]+)"/g)) {
     if (property === 'href' && /^tel:\+?[0-9]+$/i.test(value)) continue;
     if (property === 'href' && /^https:\/\/(?:www\.linkedin\.com\/sharing\/share-offsite\/\?url=|www\.facebook\.com\/sharer\/sharer\.php\?u=)/.test(value)) continue;
+    if (/^https:\/\/(?:maps\.google\.com\/maps\?|www\.google\.com\/maps\/search\/\?)/.test(value)) continue;
     if (value.startsWith('//') || /^https?:/i.test(value)) {
       problems.push(file + ' includes an external ' + property + ': ' + value);
       continue;

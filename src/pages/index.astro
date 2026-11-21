@@ -2,6 +2,7 @@
 import Site from '../layouts/Site.astro';
 import PracticeList from '../components/PracticeList.astro';
 import { url } from '../content';
+import EventCarousel from '../components/EventCarousel.astro';
 ---
 <Site title="Home">
   <div class="concept-strip"><div class="wrap">Ang &amp; Koh website concept</div></div>
@@ -19,9 +20,5 @@ import { url } from '../content';
       </div>
     </div>
   </section>
-  <section class="wrap home-guide">
-    <h2>Preparing for a first meeting</h2>
-    <p>Put the key dates, documents, and questions in one place before you meet a lawyer.</p>
-    <a class="text-link" href={url('news-events/prepare-for-a-first-meeting/')}>Read the checklist</a>
-  </section>
+  <EventCarousel />
 </Site>

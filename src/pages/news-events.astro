@@ -3,7 +3,6 @@ import Site from '../layouts/Site.astro';
 import { updates, url } from '../content';
 
 const sections = [
-  { key: 'news', title: 'From the journal' },
   { key: 'event', title: 'Events' },
 ];
 ---
@@ -11,7 +10,7 @@ const sections = [
   <div class="wrap interior updates-page">
     <header class="updates-intro">
       <h1>News &amp; Events</h1>
-      <p>Practical reading and sample events for businesses and individuals.</p>
+      <p>Events for businesses and individuals.</p>
     </header>
     <div class="updates-grid">
       {sections.map(section => <section aria-labelledby={section.key + '-heading'}>
