@@ -18,9 +18,13 @@ const sections = [
         <h2 id={section.key + '-heading'}>{section.title}</h2>
         <ul class="updates-list">
           {updates.filter(item => item.kind === section.key).map(item => <li>
-            {item.image && <img class="workshop-image" src={url('assets/' + item.image.file)} alt={item.image.alt} loading="lazy" decoding="async" />}
-            {item.kind === 'event' && <p class="event-status">Example event · Registration unavailable</p>}
+            {item.image?.file && <img class="workshop-image" src={url(item.image.file)} alt={item.image.alt} loading="lazy" decoding="async" />}
+            {item.kind === 'event' && item.sample && <p class="event-status">Example event · Registration unavailable</p>}
             <h3><a href={url('news-events/' + item.slug + '/')}>{item.title}<span class="chevron" aria-hidden="true"></span></a></h3>
+            {item.kind === 'event' && (item.date || item.venue) && <p class="event-status">
+              {item.date && <time datetime={item.date}>{new Intl.DateTimeFormat('en-MY', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(item.date))}</time>}
+              {item.date && item.venue && ' · '}{item.venue}
+            </p>}
             <p>{item.summary}</p>
           </li>)}
         </ul>

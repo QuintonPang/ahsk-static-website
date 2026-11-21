@@ -12,6 +12,7 @@ let checked = 0;
 for (const file of pages) {
   const page = readFileSync(resolve(root, file), 'utf8');
   const publishedUrl = new URL(prefix + file.replace(/index\.html$/, ''), config.site);
+  if (file === 'admin/index.html') continue;
   if (!page.includes('id="content"') || !page.includes('<h1')) problems.push(file + ' misses the main landmark or heading');
   for (const [, property, value] of page.matchAll(/\b(href|src)="([^"]+)"/g)) {
     if (property === 'href' && /^tel:\+?[0-9]+$/i.test(value)) continue;
@@ -39,6 +40,9 @@ const contact = readFileSync(resolve(root, 'contact/index.html'), 'utf8');
 assert.match(contact, /Demonstration form/);
 assert.doesNotMatch(contact, /<form[^>]+(?:action|method)=/);
 assert.doesNotMatch(contact, /<(?:input|textarea)[^>]+\bname=/);
-assert.equal(pages.length, 16, 'Expected the six main pages, nine detail pages, and a 404 page');
+const publishedEvents = readdirSync('src/events').filter(file => file.endsWith('.json'))
+  .map(file => JSON.parse(readFileSync(resolve('src/events', file), 'utf8')))
+  .filter(event => event.published);
+assert.equal(pages.length, 13 + publishedEvents.length, 'Expected main pages, journal and practice pages, published events, and admin');
 assert.equal(problems.length, 0, problems.join('\n'));
 console.log('Verified ' + pages.length + ' pages and ' + checked + ' internal link and asset references under ' + prefix);

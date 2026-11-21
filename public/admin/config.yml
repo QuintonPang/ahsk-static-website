@@ -1,0 +1,38 @@
+backend:
+  name: turbo-github
+  branch: main
+site_url: https://quintonpang.github.io/ahsk-static-website/
+display_url: https://quintonpang.github.io/ahsk-static-website/
+media_folder: public/assets/uploads
+public_folder: assets/uploads
+collections:
+  - name: events
+    label: Events
+    label_singular: Event
+    folder: src/events
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Summary, name: summary, widget: text}
+      - {label: Published, name: published, widget: boolean, default: false}
+      - {label: Sample event, name: sample, widget: boolean, default: false}
+      - {label: Display order, name: order, widget: number, value_type: int, min: 1, default: 10}
+      - {label: Event date, name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", required: false}
+      - {label: Venue, name: venue, widget: string, required: false}
+      - label: Image
+        name: image
+        widget: object
+        required: false
+        fields:
+          - {label: Image file, name: file, widget: image, required: false}
+          - {label: Image description, name: alt, widget: string, required: false}
+      - label: Description paragraphs
+        name: paragraphs
+        widget: list
+        min: 1
+        field: {label: Paragraph, name: paragraph, widget: text}

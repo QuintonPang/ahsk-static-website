@@ -32,7 +32,7 @@ export const practices = [
   },
 ];
 
-export const updates = [
+const news = [
   {
     kind: 'news',
     slug: 'prepare-for-a-first-meeting',
@@ -55,48 +55,28 @@ export const updates = [
       'Share any date the parties are working towards so the review can be planned around it.',
     ],
   },
-  {
-    kind: 'event',
-    slug: 'small-business-contract-workshop',
-    image: { file: 'workshop-table.webp', alt: 'Hands taking notes on worksheets around a meeting table' },
-    title: 'Small business contract workshop',
-    summary: 'A sample session on turning a business agreement into a clear list of obligations and deadlines.',
-    paragraphs: [
-      'This is an example event listing. Registration and attendance are unavailable for this sample.',
-      'The proposed session uses a fictional supplier agreement to practise identifying deliverables, payment dates, and decisions that need clarification.',
-    ],
-  },
-  {
-    kind: 'event',
-    slug: 'property-purchase-briefing',
-    title: 'Preparing for a property purchase',
-    summary: 'A sample briefing on organising purchase documents, financing questions, and key dates.',
-    paragraphs: [
-      'This is an example event listing. Registration and attendance are unavailable for this sample.',
-      'Designed for first-time buyers, this proposed briefing follows a fictional purchase from the initial offer to completion.',
-      'Participants would work through a document checklist and prepare questions to discuss with their lawyer and financing provider.',
-    ],
-  },
-  {
-    kind: 'event',
-    slug: 'business-dispute-roundtable',
-    title: 'Business dispute roundtable',
-    summary: 'A sample discussion on putting together the facts when a commercial relationship breaks down.',
-    paragraphs: [
-      'This is an example event listing. Registration and attendance are unavailable for this sample.',
-      'The proposed roundtable uses fictional scenarios involving unpaid invoices and disagreements over delivery.',
-      'The discussion would focus on organising correspondence, building a timeline, and identifying questions for a first legal consultation.',
-    ],
-  },
-  {
-    kind: 'event',
-    slug: 'commercial-lease-clinic',
-    title: 'Commercial lease preparation clinic',
-    summary: 'A sample session for business owners preparing to discuss a new lease or renewal.',
-    paragraphs: [
-      'This is an example event listing. Registration and attendance are unavailable for this sample.',
-      'This proposed clinic uses a fictional shop tenancy to explore the information a business owner can gather before a lease review.',
-      'Participants would prepare a checklist covering proposed use, fit-out plans, key dates, and terms that need further discussion.',
-    ],
-  },
 ];
+
+type Event = {
+  title: string;
+  summary: string;
+  paragraphs: string[];
+  published: boolean;
+  order: number;
+  sample: boolean;
+  date?: string;
+  venue?: string;
+  image?: { file: string; alt: string };
+};
+
+const eventFiles = import.meta.glob<Event>('./events/*.json', { eager: true, import: 'default' });
+const events = Object.entries(eventFiles)
+  .filter(([, event]) => event.published)
+  .sort(([leftPath, left], [rightPath, right]) => left.order - right.order || leftPath.localeCompare(rightPath))
+  .map(([path, event]) => ({
+    ...event,
+    kind: 'event',
+    slug: path.split('/').pop()!.replace(/\.json$/, ''),
+  }));
+
+export const updates = [...news, ...events];

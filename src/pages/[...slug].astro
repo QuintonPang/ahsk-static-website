@@ -25,7 +25,11 @@ const section = page.kind === 'practice' ? { path: 'practice-areas/', label: 'Pr
       <p>{page.item.prepare}</p>
       <a class="button" href={url('contact/')}>Contact</a>
     </> : <>
-      {page.item.image && <img class="workshop-image article-image" src={url('assets/' + page.item.image.file)} alt={page.item.image.alt} decoding="async" />}
+      {page.item.image?.file && <img class="workshop-image article-image" src={url(page.item.image.file)} alt={page.item.image.alt} decoding="async" />}
+      {page.item.kind === 'event' && (page.item.date || page.item.venue) && <p>
+        {page.item.date && <time datetime={page.item.date}>{new Intl.DateTimeFormat('en-MY', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(page.item.date))}</time>}
+        {page.item.date && page.item.venue && ' · '}{page.item.venue}
+      </p>}
       {page.item.paragraphs.map(paragraph => <p>{paragraph}</p>)}
     </>}
   </article>

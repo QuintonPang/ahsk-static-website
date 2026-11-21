@@ -1,0 +1,15 @@
+{
+  "image": {
+    "file": "assets/workshop-table.webp",
+    "alt": "Hands taking notes on worksheets around a meeting table"
+  },
+  "title": "Small business contract workshop",
+  "summary": "A sample session on turning a business agreement into a clear list of obligations and deadlines.",
+  "paragraphs": [
+    "This is an example event listing. Registration and attendance are unavailable for this sample.",
+    "The proposed session uses a fictional supplier agreement to practise identifying deliverables, payment dates, and decisions that need clarification."
+  ],
+  "published": true,
+  "order": 1,
+  "sample": true
+}

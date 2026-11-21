@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Event editor | Ang &amp; Koh</title>
+  <style>
+    body { margin: 0; background: #101816; color: #f3ecdd; font: 16px/1.6 system-ui, sans-serif; }
+    #setup { max-width: 640px; margin: 10vh auto; padding: 28px; }
+    a { color: #e7caa3; }
+  </style>
+</head>
+<body>
+  <main id="setup">
+    <h1>Event editor</h1>
+    <p id="status" role="status">Loading the editor…</p>
+    <div id="instructions" hidden>
+      <p>Connect the Ang &amp; Koh site in Decap Turbo to enable staff login.</p>
+      <ol>
+        <li>Create a free Turbo account using the intended editor’s email.</li>
+        <li>Connect GitHub and select only QuintonPang/ahsk-static-website.</li>
+        <li>Create a site for this repository, using the main branch and public/admin/config.yml as the config path.</li>
+        <li>Set the admin interface URL to https://quintonpang.github.io/ahsk-static-website/admin/.</li>
+        <li>Copy the site ID from Turbo into public/admin/settings.json in the repository and commit the change.</li>
+      </ol>
+      <p><a href="https://turbo.decapcms.org/">Open Decap Turbo</a></p>
+    </div>
+    <p><a href="../news-events/">Back to News &amp; Events</a></p>
+    <noscript>Enable JavaScript to use the event editor.</noscript>
+  </main>
+  <script>
+    window.CMS_MANUAL_INIT = true;
+    async function start() {
+      const response = await fetch('./settings.json', { cache: 'no-store' });
+      if (!response.ok) throw new Error('Unable to load editor settings. Please reload.');
+      const settings = await response.json();
+      if (!settings.turbo_site_id) {
+        document.getElementById('status').textContent = 'Account connection is pending.';
+        document.getElementById('instructions').hidden = false;
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/decap-cms@3.17.1/dist/decap-cms.js';
+      script.onerror = () => { document.getElementById('status').textContent = 'The editor could not load. Please reload.'; };
+      script.onload = () => {
+        document.getElementById('setup').hidden = true;
+        window.CMS.init({ config: { backend: { name: 'turbo-github', turbo_site_id: settings.turbo_site_id, branch: 'main' } } });
+      };
+      document.head.append(script);
+    }
+    start().catch(error => { document.getElementById('status').textContent = error.message; });
+  </script>
+</body>
+</html>
