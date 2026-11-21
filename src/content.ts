@@ -84,3 +84,23 @@ const events = Object.entries(eventFiles)
   }));
 
 export const updates = [...news, ...events];
+
+type Person = {
+  name: string;
+  initials?: string;
+  role: string;
+  bio?: string;
+  published: boolean;
+  sample?: boolean;
+  order: number;
+  image?: { file: string; alt?: string };
+};
+
+const peopleFiles = import.meta.glob<Person>('./people/*.json', { eager: true, import: 'default' });
+export const people = Object.entries(peopleFiles)
+  .filter(([, person]) => person.published)
+  .sort(([leftPath, left], [rightPath, right]) => left.order - right.order || leftPath.localeCompare(rightPath))
+  .map(([path, person]) => ({
+    ...person,
+    slug: path.split('/').pop()!.replace(/\.json$/, ''),
+  }));

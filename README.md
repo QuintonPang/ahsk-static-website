@@ -36,3 +36,11 @@ Events are JSON files in `src/events/`. The filename is the public URL slug. Exi
 Run `npm run build` followed by `npm run verify`. Verification calculates the expected page count from published event files so adding or deleting entries does not require editing the check.
 
 The editor loads Decap CMS 3.17.1 from jsDelivr and uses Decap Turbo for authentication and repository access. Public visitors can view events, while editor permissions are managed in Turbo. No authentication secrets are stored in this repository. End-to-end authenticated publishing must be verified after the account connection is complete.
+
+## Managing People
+
+Open the same admin URL and select People. Create, edit, hide, or delete cards using the Name, Role, Biography, Initials, Portrait, Published, Sample profile, and Display order fields. Published controls whether a card appears after deployment. Initials are used when there is no portrait. No individual profile pages or card links are generated. Sample profiles show the example-directory notice when all visible profiles are samples.
+
+People are stored as one JSON file per person in `src/people/`. Existing sample cards were migrated with their names and biographies preserved. The footer's demo social destinations follow the first visible person, or the People page when no profiles are visible, so hiding or deleting a profile does not break deployment.
+
+The News & Events listing uses clickable cards with optional images. The homepage carousel continues to use the same published event files.

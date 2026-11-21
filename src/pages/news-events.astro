@@ -16,8 +16,9 @@ const sections = [
       {sections.map(section => <section aria-labelledby={section.key + '-heading'}>
         <h2 id={section.key + '-heading'}>{section.title}</h2>
         <ul class="updates-list">
-          {updates.filter(item => item.kind === section.key).map(item => <li>
+          {updates.filter(item => item.kind === section.key).map(item => <li class="event-card">
             {item.image?.file && <img class="workshop-image" src={eventImageUrl(item.image.file)} alt={item.image.alt} loading="lazy" decoding="async" />}
+            <div class="event-card-body">
             {item.kind === 'event' && item.sample && <p class="event-status">Example event · Registration unavailable</p>}
             <h3><a href={url('news-events/' + item.slug + '/')}>{item.title}<span class="chevron" aria-hidden="true"></span></a></h3>
             {item.kind === 'event' && (item.date || item.venue) && <p class="event-status">
@@ -25,6 +26,7 @@ const sections = [
               {item.date && item.venue && ' · '}{item.venue}
             </p>}
             <p>{item.summary}</p>
+            </div>
           </li>)}
         </ul>
       </section>)}
