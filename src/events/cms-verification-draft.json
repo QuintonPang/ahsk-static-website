@@ -1,0 +1,10 @@
+{
+  "published": false,
+  "sample": false,
+  "order": 10,
+  "title": "CMS verification draft",
+  "summary": "Temporary unpublished entry used to verify the event editor.",
+  "paragraphs": [
+    "This temporary entry will be removed after verification."
+  ]
+}
