@@ -60,7 +60,7 @@ const news = [
 type Event = {
   title: string;
   summary: string;
-  paragraphs: string[];
+  paragraphs?: string[];
   published: boolean;
   order: number;
   sample: boolean;
@@ -75,6 +75,7 @@ const events = Object.entries(eventFiles)
   .sort(([leftPath, left], [rightPath, right]) => left.order - right.order || leftPath.localeCompare(rightPath))
   .map(([path, event]) => ({
     ...event,
+    paragraphs: event.paragraphs ?? [],
     kind: 'event',
     slug: path.split('/').pop()!.replace(/\.json$/, ''),
   }));

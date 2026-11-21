@@ -35,5 +35,6 @@ collections:
       - label: Description paragraphs
         name: paragraphs
         widget: list
-        min: 1
+        required: false
+        min: 0
         field: {label: Paragraph, name: paragraph, widget: text}
