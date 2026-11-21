@@ -43,4 +43,4 @@ Open the same admin URL and select People. Create, edit, hide, or delete cards u
 
 People are stored as one JSON file per person in `src/people/`. Existing sample cards were migrated with their names and biographies preserved. The footer's demo social destinations follow the first visible person, or the People page when no profiles are visible, so hiding or deleting a profile does not break deployment.
 
-The News & Events listing uses clickable cards with optional images. The homepage image carousel is independent of events and uses the illustrative assets listed in `src/components/ImageCarousel.astro`.
+The News & Events listing uses clickable cards with optional images. The homepage shows up to four published event cards, sorted by event date from newest to oldest. Undated events follow dated ones, with Display order resolving ties. More events opens the complete event listing.

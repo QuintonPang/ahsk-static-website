@@ -1,6 +1,7 @@
 ---
 import Site from '../layouts/Site.astro';
-import { updates, eventImageUrl, url } from '../content';
+import { events } from '../content';
+import EventCards from '../components/EventCards.astro';
 
 const sections = [
   { key: 'event', title: 'Events' },
@@ -15,20 +16,7 @@ const sections = [
     <div class="updates-grid">
       {sections.map(section => <section aria-labelledby={section.key + '-heading'}>
         <h2 id={section.key + '-heading'}>{section.title}</h2>
-        <ul class="updates-list">
-          {updates.filter(item => item.kind === section.key).map(item => <li class="event-card">
-            {item.image?.file && <img class="workshop-image" src={eventImageUrl(item.image.file)} alt={item.image.alt} loading="lazy" decoding="async" />}
-            <div class="event-card-body">
-            {item.kind === 'event' && item.sample && <p class="event-status">Example event · Registration unavailable</p>}
-            <h3><a href={url('news-events/' + item.slug + '/')}>{item.title}<span class="chevron" aria-hidden="true"></span></a></h3>
-            {item.kind === 'event' && (item.date || item.venue) && <p class="event-status">
-              {item.date && <time datetime={item.date}>{new Intl.DateTimeFormat('en-MY', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(item.date))}</time>}
-              {item.date && item.venue && ' · '}{item.venue}
-            </p>}
-            <p>{item.summary}</p>
-            </div>
-          </li>)}
-        </ul>
+        <EventCards items={events} />
       </section>)}
     </div>
   </div>

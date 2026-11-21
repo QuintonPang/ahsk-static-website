@@ -73,7 +73,7 @@ type Event = {
 };
 
 const eventFiles = import.meta.glob<Event>('./events/*.json', { eager: true, import: 'default' });
-const events = Object.entries(eventFiles)
+export const events = Object.entries(eventFiles)
   .filter(([, event]) => event.published)
   .sort(([leftPath, left], [rightPath, right]) => left.order - right.order || leftPath.localeCompare(rightPath))
   .map(([path, event]) => ({

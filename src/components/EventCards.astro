@@ -1,0 +1,19 @@
+---
+import { events, eventImageUrl, url } from '../content';
+interface Props { items: typeof events }
+const { items } = Astro.props;
+---
+        <ul class="updates-list">
+          {items.map(item => <li class="event-card">
+            {item.image?.file && <img class="workshop-image" src={eventImageUrl(item.image.file)} alt={item.image.alt} loading="lazy" decoding="async" />}
+            <div class="event-card-body">
+            {item.kind === 'event' && item.sample && <p class="event-status">Example event · Registration unavailable</p>}
+            <h3><a href={url('news-events/' + item.slug + '/')}>{item.title}<span class="chevron" aria-hidden="true"></span></a></h3>
+            {item.kind === 'event' && (item.date || item.venue) && <p class="event-status">
+              {item.date && <time datetime={item.date}>{new Intl.DateTimeFormat('en-MY', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(item.date))}</time>}
+              {item.date && item.venue && ' · '}{item.venue}
+            </p>}
+            <p>{item.summary}</p>
+            </div>
+          </li>)}
+        </ul>
